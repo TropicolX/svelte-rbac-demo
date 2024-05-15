@@ -4,8 +4,8 @@
 
 	import Loading from "$lib/Loading.svelte";
 	import { checkRole } from "../rbacMiddleware";
+	import { ROLES } from "../constants";
 	import { user, cart, products } from "../stores";
-
 	import "../app.css";
 
 	/** @type {import('./$types').LayoutData} */
@@ -47,8 +47,8 @@
 		}
 	}
 	$: $user = data.user;
-	$: isAdmin = checkRole($user, "admin");
-	$: isCustomer = checkRole($user, "customer");
+	$: isAdmin = checkRole($user, ROLES.ADMIN);
+	$: isCustomer = checkRole($user, ROLES.CUSTOMER);
 </script>
 
 <header

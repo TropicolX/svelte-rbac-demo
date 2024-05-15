@@ -1,23 +1,20 @@
-export function checkRole(user, requiredRoles) {
-	if (!user?.role) {
+import { rolePermissions } from "./rolePermissions";
+
+export function checkRole(user, requiredRole) {
+	if (!user) {
 		return false;
 	}
 
-	return requiredRoles.includes(user.role);
+	return user.role === requiredRole;
 }
 
 export function checkPermissions(user, requiredPermissions) {
-	if (!user?.permissions) {
+	if (!user) {
 		return false;
 	}
 
-	if (Array.isArray(requiredPermissions)) {
-		return requiredPermissions.every((requiredPermission) => {
-			return user.permissions?.includes(requiredPermission);
-		});
-	}
-
-	return user.permissions?.includes(requiredPermissions);
+	const userPermissions = rolePermissions[user.role];
+	return userPermissions?.includes(requiredPermissions);
 }
 
 export function checkRoleAndPermissions(
@@ -29,20 +26,4 @@ export function checkRoleAndPermissions(
 		checkRole(user, requiredRole) &&
 		checkPermissions(user, requiredPermissions)
 	);
-}
-
-export function getUserData(userData) {
-	const adminPermissions = [
-		"delete:products",
-		"update:products",
-		"create:products",
-	];
-
-	const customerPermissions = ["update:profile", "read:profile"];
-
-	return {
-		...userData,
-		permissions:
-			userData.role === "admin" ? adminPermissions : customerPermissions,
-	};
 }

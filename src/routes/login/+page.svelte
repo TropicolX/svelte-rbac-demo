@@ -2,7 +2,6 @@
 	import { goto } from "$app/navigation";
 
 	import Loading from "$lib/Loading.svelte";
-	import { getUserData } from "../../rbacMiddleware";
 	import { user } from "../../stores";
 
 	let loading = false;
@@ -38,7 +37,7 @@
 			}
 		).then(async (res) => await res.json());
 
-		$user = await getUserData(userData);
+		$user = userData;
 		goto("/");
 	};
 </script>

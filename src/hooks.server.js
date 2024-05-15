@@ -1,9 +1,7 @@
 import { redirect } from "@sveltejs/kit";
 
-import { getUserData } from "./rbacMiddleware";
-
 /** @type {import('@sveltejs/kit').Handle} */
-export const handle: Handler = async ({ event, resolve }) => {
+export const handle = async ({ event, resolve }) => {
 	event.locals.user = null;
 
 	// get access token from cookies
@@ -19,7 +17,7 @@ export const handle: Handler = async ({ event, resolve }) => {
 			}
 		).then(async (res) => await res.json());
 
-		return getUserData(userData);
+		return userData;
 	};
 
 	switch (true) {
