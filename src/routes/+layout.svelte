@@ -3,17 +3,15 @@
 	import { page } from "$app/stores";
 
 	import Loading from "$lib/Loading.svelte";
-	import { checkRole } from "../rbacMiddleware";
-	import { ROLES } from "../constants";
 	import { user, cart, products } from "../stores";
 	import "../app.css";
 
 	/** @type {import('./$types').LayoutData} */
 	export let data;
 
-	$: isAdminOrHomePage =
+	$: isAdminPageOrHomePage =
 		$page.url.pathname === "/admin" || $page.url.pathname === "/";
-	let loading = isAdminOrHomePage;
+	let loading = isAdminPageOrHomePage;
 
 	const fetchData = async () => {
 		try {
@@ -41,14 +39,12 @@
 	}
 
 	$: {
-		if (isAdminOrHomePage && !$products.length) {
+		if (isAdminPageOrHomePage && !$products.length) {
 			loading = true;
 			fetchData();
 		}
 	}
 	$: $user = data.user;
-	$: isAdmin = checkRole($user, ROLES.ADMIN);
-	$: isCustomer = checkRole($user, ROLES.CUSTOMER);
 </script>
 
 <header
@@ -56,12 +52,8 @@
 >
 	<a class="text-2xl font-bold" href="/">Acme</a>
 	<nav class="hidden md:flex items-center space-x-6">
-		{#if isAdmin}
-			<a class="hover:text-gray-300" href="/admin">Admin</a>
-		{/if}
-		{#if isCustomer}
-			<a class="hover:text-gray-300" href="/user">Profile</a>
-		{/if}
+		<a class="hover:text-gray-300" href="/admin">Admin</a>
+		<a class="hover:text-gray-300" href="/user">Profile</a>
 	</nav>
 	<div class="flex items-center space-x-4">
 		<button class="hover:text-gray-300" on:click={goToLogin}

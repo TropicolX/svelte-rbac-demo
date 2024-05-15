@@ -1,9 +1,5 @@
 <script>
-	import { checkPermissions } from "../../../rbacMiddleware";
-	import { PERMISSIONS } from "../../../constants";
 	import { user } from "../../../stores";
-
-	$: canEditProfile = checkPermissions($user, PERMISSIONS.UPDATE_PROFILE);
 
 	let name = $user.name;
 	let email = $user.email;
@@ -36,7 +32,6 @@
 					id="name"
 					placeholder="Enter your name"
 					bind:value={name}
-					disabled={!canEditProfile}
 				/>
 			</div>
 			<div class="space-y-2">
@@ -52,7 +47,6 @@
 					placeholder="Enter your email"
 					type="email"
 					bind:value={email}
-					disabled={!canEditProfile}
 				/>
 			</div>
 			<div class="space-y-2">
@@ -67,7 +61,6 @@
 					id="password"
 					placeholder="Enter your old password"
 					type="password"
-					disabled={!canEditProfile}
 				/>
 			</div>
 			<div class="space-y-2">
@@ -82,14 +75,12 @@
 					id="password"
 					placeholder="Enter your new password"
 					type="password"
-					disabled={!canEditProfile}
 				/>
 			</div>
 		</div>
 		<div class="flex items-center p-6">
 			<button
 				class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gray-800 text-white hover:bg-gray-900 h-10 px-4 py-2 ml-auto"
-				disabled={!canEditProfile}
 			>
 				Save
 			</button>

@@ -1,23 +1,15 @@
 <script>
-	import { checkPermissions } from "../../../rbacMiddleware";
-	import { PERMISSIONS } from "../../../constants";
-	import { user, products } from "../../../stores";
-
-	$: canCreateProducts = checkPermissions($user, PERMISSIONS.CREATE_PRODUCTS);
-	$: canDeleteProducts = checkPermissions($user, PERMISSIONS.DELETE_PRODUCTS);
-	$: canUpdateProducts = checkPermissions($user, PERMISSIONS.UPDATE_PRODUCTS);
+	import { products } from "../../../stores";
 </script>
 
 <div class="container mx-auto px-4 md:px-8 py-12">
 	<div class="flex flex-wrap items-center justify-between mb-8">
 		<h2 class="text-3xl md:text-4xl font-bold">Admin Dashboard</h2>
-		{#if canCreateProducts}
-			<button
-				class="mt-4 min-[457px]:mt-0 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-gray-900 text-white hover:bg-gray-800"
-			>
-				Add new product
-			</button>
-		{/if}
+		<button
+			class="mt-4 min-[457px]:mt-0 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-gray-900 text-white hover:bg-gray-800"
+		>
+			Add new product
+		</button>
 	</div>
 	<div class="bg-white rounded-lg shadow-lg overflow-hidden">
 		<div class="relative w-full overflow-auto">
@@ -83,57 +75,53 @@
 								class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"
 							>
 								<div class="flex items-center space-x-2">
-									{#if canUpdateProducts}
-										<!-- Update button -->
-										<button
-											class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
+									<!-- Update button -->
+									<button
+										class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											class="h-4 w-4"
 										>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="24"
-												height="24"
-												viewBox="0 0 24 24"
-												fill="none"
-												stroke="currentColor"
-												stroke-width="2"
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												class="h-4 w-4"
-											>
-												<path
-													d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
-												></path>
-											</svg>
-										</button>
-									{/if}
+											<path
+												d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"
+											></path>
+										</svg>
+									</button>
 
-									{#if canDeleteProducts}
-										<!-- Delete button -->
-										<button
-											class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
+									<!-- Delete button -->
+									<button
+										class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="24"
+											height="24"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											class="h-4 w-4"
 										>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="24"
-												height="24"
-												viewBox="0 0 24 24"
-												fill="none"
-												stroke="currentColor"
-												stroke-width="2"
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												class="h-4 w-4"
-											>
-												<path d="M3 6h18"></path>
-												<path
-													d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
-												></path>
-												<path
-													d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
-												></path>
-											</svg>
-										</button>
-									{/if}
+											<path d="M3 6h18"></path>
+											<path
+												d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+											></path>
+											<path
+												d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+											></path>
+										</svg>
+									</button>
 								</div>
 							</td>
 						</tr>
