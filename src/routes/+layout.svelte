@@ -11,9 +11,9 @@
 	/** @type {import('./$types').LayoutData} */
 	export let data;
 
-	$: isAdminOrHomePage =
+	$: isAdminPageOrHomePage =
 		$page.url.pathname === "/admin" || $page.url.pathname === "/";
-	let loading = isAdminOrHomePage;
+	let loading = isAdminPageOrHomePage;
 
 	const fetchData = async () => {
 		try {
@@ -41,7 +41,7 @@
 	}
 
 	$: {
-		if (isAdminOrHomePage && !$products.length) {
+		if (isAdminPageOrHomePage && !$products.length) {
 			loading = true;
 			fetchData();
 		}
