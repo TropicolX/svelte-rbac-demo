@@ -52,8 +52,10 @@
 >
 	<a class="text-2xl font-bold" href="/">Acme</a>
 	<nav class="hidden md:flex items-center space-x-6">
-		<a class="hover:text-gray-300" href="/admin">Admin</a>
-		<a class="hover:text-gray-300" href="/user">Profile</a>
+		{#if $user}
+			<a class="hover:text-gray-300" href="/admin">Admin</a>
+			<a class="hover:text-gray-300" href="/user">Profile</a>
+		{/if}
 	</nav>
 	<div class="flex items-center space-x-4">
 		<button class="hover:text-gray-300" on:click={goToLogin}
