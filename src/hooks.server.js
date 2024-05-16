@@ -7,7 +7,7 @@ export const handle = async ({ event, resolve }) => {
 	// get access token from cookies
 	const accessToken = event.cookies.get("access_token");
 
-	const fetchAndHandleUserData = async () => {
+	const fetchUserData = async () => {
 		const userData = await fetch(
 			"https://api.escuelajs.co/api/v1/auth/profile",
 			{
@@ -31,7 +31,7 @@ export const handle = async ({ event, resolve }) => {
 				throw redirect(307, "/login");
 			} else {
 				try {
-					event.locals.user = await fetchAndHandleUserData();
+					event.locals.user = await fetchUserData();
 				} catch (error) {
 					throw redirect(307, "/login");
 				}
@@ -40,7 +40,7 @@ export const handle = async ({ event, resolve }) => {
 		default:
 			if (accessToken) {
 				try {
-					event.locals.user = await fetchAndHandleUserData();
+					event.locals.user = await fetchUserData();
 				} catch (error) {
 					console.error(error);
 				}
