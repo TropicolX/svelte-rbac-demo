@@ -1,5 +1,5 @@
 <script>
-	import Product from "../lib/Product.svelte";
+	import Product from "$lib/components/Product.svelte";
 
 	import { products } from "../stores";
 </script>

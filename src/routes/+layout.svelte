@@ -2,7 +2,7 @@
 	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
 
-	import Loading from "$lib/Loading.svelte";
+	import Loading from "$lib/components/Loading.svelte";
 	import { user, cart, products } from "../stores";
 	import "../app.css";
 

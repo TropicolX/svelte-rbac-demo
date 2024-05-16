@@ -1,5 +1,5 @@
 <script>
-	import { cart } from "../stores";
+	import { cart } from "../../stores";
 
 	export let title;
 	export let price;
