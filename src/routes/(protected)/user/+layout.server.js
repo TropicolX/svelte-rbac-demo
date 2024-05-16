@@ -1,6 +1,6 @@
 import { redirect } from "@sveltejs/kit";
 
-import { checkRoleAndPermissions } from "../../../rbacMiddleware";
+import { checkRoleAndPermissions } from "$lib/rbacUtils";
 import { PERMISSIONS, ROLES } from "../../../constants";
 
 /** @type {import('./$types').LayoutServerLoad} */

@@ -1,4 +1,4 @@
-import { PERMISSIONS, ROLES } from "./constants";
+import { PERMISSIONS, ROLES } from "../constants";
 
 export const rolePermissions = {
 	[ROLES.ADMIN]: [

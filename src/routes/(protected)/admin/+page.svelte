@@ -1,5 +1,5 @@
 <script>
-	import { checkPermissions } from "../../../rbacMiddleware";
+	import { checkPermissions } from "$lib/rbacUtils";
 	import { PERMISSIONS } from "../../../constants";
 	import { user, products } from "../../../stores";
 

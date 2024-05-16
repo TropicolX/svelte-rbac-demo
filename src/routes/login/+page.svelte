@@ -1,7 +1,7 @@
 <script>
 	import { goto } from "$app/navigation";
 
-	import Loading from "$lib/Loading.svelte";
+	import Loading from "$lib/components/Loading.svelte";
 	import { user } from "../../stores";
 
 	let loading = false;
