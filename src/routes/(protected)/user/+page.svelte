@@ -5,7 +5,7 @@
 	let email = $user.email;
 </script>
 
-<div class="h-[calc(100svh-64px)] w-full flex items-center justify-center">
+<div class="h-[calc(100vh-64px)] w-full flex items-center justify-center">
 	<div
 		class="rounded-lg border bg-card text-card-foreground shadow-sm w-[28rem] max-w-md"
 	>
