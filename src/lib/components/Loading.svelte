@@ -1,4 +1,4 @@
-<div class="h-[calc(100svh-64px)] w-full flex items-center justify-center">
+<div class="h-[calc(100vh-64px)] w-full flex items-center justify-center">
 	<div class="space-y-4 text-center">
 		<div class="flex items-center justify-center">
 			<div
